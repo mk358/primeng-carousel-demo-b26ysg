@@ -1,0 +1,26 @@
+<!-- <div *ngFor="let item of images">
+  <img [src]="item.previewImageSrc" [title]="item.title" [alt]="item.alt"/>
+</div> -->
+<div class="p-py-2">
+	<p-button type="button" icon="pi pi-plus" (click)="next()" styleClass="p-button-secondary p-mr-2"></p-button>
+	<p-button type="button" icon="pi pi-minus" (click)="prev()" styleClass="p-button-secondary"></p-button>
+</div>
+<div style="position:relative">
+	<p-galleria [(value)]="images" [containerStyle]="{'max-width': '640px','margin-top': '2em'}"
+		[responsiveOptions]="responsiveOptions" [showThumbnails]="false" [showIndicators]="true"
+		[showIndicatorsOnItem]="false" indicatorsPosition="bottom" [(activeIndex)]="activeIndex">
+		<ng-template pTemplate="item" let-item>
+			<img [src]="item.previewImageSrc" style="width: 50%; display: block;" />
+            </ng-template>
+			<ng-template pTemplate="thumbnail" let-item>
+				<div class="p-grid p-nogutter p-justify-center">
+					<img [src]="item.thumbnailImageSrc" style="display: block;" />
+                </div>
+			</ng-template>
+			<ng-template pTemplate="indicator" let-index>
+				<span style="color: #000; cursor: pointer" [ngClass]="{'ind-active': (activeIndex === (index ))}">
+                    {{index + 1}}
+                </span>
+			</ng-template>
+	</p-galleria>
+</div>
